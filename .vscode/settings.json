@@ -1,0 +1,7 @@
+{
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.format.enable": false,
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": false
+}

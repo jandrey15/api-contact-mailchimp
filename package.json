@@ -1,0 +1,37 @@
+{
+  "name": "api-contact",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node index.js",
+    "lint": "standard"
+  },
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "dotenv": "^8.1.0",
+    "express": "4.17.1",
+    "mailchimp-api-v3": "1.13.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.3",
+    "standard": "14.3.1"
+  },
+  "standard": {
+    "ignore": [
+      "**/out/",
+      "/lib/select2/",
+      "/lib/ckeditor/",
+      "tmp.js",
+      "build/*",
+      "dist/*",
+      ".next"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ],
+    "parser": "babel-eslint"
+  }
+}
