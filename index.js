@@ -1,7 +1,15 @@
 const express = require('express')
 const Mailchimp = require('mailchimp-api-v3')
-const { config } = require('./config')
+const cors = require('cors')
 const app = express()
+const { config } = require('./config')
+
+app.use(
+  cors({
+    origin: ['https://johnserrano.co', 'http://localhost:3000'],
+    methods: ['GET', 'POST']
+  })
+)
 
 const port = process.env.PORT || 3000
 
@@ -33,11 +41,8 @@ app.post('/api/contact', (req, res) => {
       }
     })
     .then(function (results) {
-      // console.log(results)
       if (results.statusCode < 300) {
-        res
-          .status(200)
-          .send({ message: 'Gracias por subscribirse.', status: 200 })
+        res.status(200).send({ message: 'Gracias por subscribirse.', status: 200 })
       } else {
         res.status(400).send({
           message: 'Algo salio mal intentalo mas tarde.',
@@ -46,16 +51,13 @@ app.post('/api/contact', (req, res) => {
       }
     })
     .catch(function (err) {
-      // console.log(err)
       if (err.status === 400) {
         res.status(400).send({
           message: 'El Correo electrónico ya existe.',
           status: 400
         })
       } else {
-        res
-          .status(500)
-          .send({ message: 'Algo salio mal :(', status: 500 })
+        res.status(500).send({ message: 'Algo salio mal :(', status: 500 })
       }
     })
 })
